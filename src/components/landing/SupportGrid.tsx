@@ -13,7 +13,7 @@ const options: SupportOption[] = [
 
 export default function SupportGrid({ setViewType }: { setViewType: (viewType: ViewType) => void }) {
   return (
-    <section className="grid grid-cols-2 gap-4 px-4 pb-10">
+    <section className="grid grid-cols-2 gap-4 px-4 pb-16">
       {options.map((opt, i) => (
         <SupportOptionButton key={i} supportOption={opt} setViewType={setViewType} />
       ))}
