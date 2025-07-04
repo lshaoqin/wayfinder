@@ -2,24 +2,25 @@
 import { ResourceGalleryItem } from '@/types/resources';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
-import ReactPlayer from 'react-player/lazy';
+import ReactPlayer from 'react-player'
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Image from 'next/image';
+import { ResourceTypes } from '@/types/resources';
 
 export default function ResourceGallery({ items }: { items: ResourceGalleryItem[] }) {
     const processedItems = items.length > 0 ? items : [
     {
-      type: 'photo',
+      type: ResourceTypes.Photo,
       url: 'https://images.unsplash.com/vector-1739203267529-6e1852ec52f5?q=80&w=2064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     }
   ];
 
   const renderMedia = (item: ResourceGalleryItem) => {
-    if (item.type === 'photo') {
+    if (item.type === ResourceTypes.Photo) {
       return (
         <Image
           src={item.url}
@@ -34,7 +35,7 @@ export default function ResourceGallery({ items }: { items: ResourceGalleryItem[
       return (
         <div className="w-full h-full">
           <ReactPlayer
-            url={item.url}
+            src={item.url}
             width="100%"
             height="100%"
             controls
@@ -42,12 +43,6 @@ export default function ResourceGallery({ items }: { items: ResourceGalleryItem[
             config={{
               youtube: {
                 playerVars: { showinfo: 1, rel: 0 }
-              },
-              tiktok: {
-                embedOptions: { 
-                  containerClass: 'tiktok-embed',
-                  blockOnConsent: true
-                }
               }
             }}
           />

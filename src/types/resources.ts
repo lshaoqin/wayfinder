@@ -1,7 +1,12 @@
 import { Tag } from "./filters";
 
+export enum ResourceTypes {
+  Video = "video",
+  Photo = "photo"
+}
+
 export type ResourceGalleryItem = {
-  type: "video" | "photo";
+  type: ResourceTypes;
   url: string;
 };
 

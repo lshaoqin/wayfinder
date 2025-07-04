@@ -19,11 +19,8 @@
     "opening_hours": "^3.9.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-<<<<<<< HEAD
     "react-player": "^3.1.0",
-=======
     "react-markdown": "^10.1.0",
->>>>>>> 618e931dcad63bf96c01c60db4afae87f0c00c10
     "swiper": "^11.2.10",
     "tailwind-merge": "^3.3.1"
   },
