@@ -9,7 +9,7 @@ export enum Tag {
     Home = 'home'
 }
 
-export enum FeelingFilterKey {
+export enum IssueFilterKey {
     Anxious = 'anxious',
     BurnedOut = 'burnedOut',
     NeedHelp = 'needHelp',

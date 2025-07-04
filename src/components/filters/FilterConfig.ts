@@ -1,4 +1,4 @@
-import { FilterQuestionGroup, FeelingFilterKey } from "@/types/filters";
+import { FilterQuestionGroup, IssueFilterKey } from "@/types/filters";
 import { 
   costPredicates,
   timingPredicates,
@@ -8,41 +8,41 @@ import {
   feelingPredicates
 } from "./FilterHelpers";
 
-// Export feeling filters for use in SupportOptionButton
-export const feelingFilters = {
-  [FeelingFilterKey.Anxious]: {
-    key: "feeling-anxious",
-    name: "Anxious",
+// Export issue filters for use in SupportOptionButton
+export const issueFilters = {
+  [IssueFilterKey.Anxious]: {
+    key: "issue-anxiety",
+    name: "Anxiety & Worry",
     predicate: feelingPredicates.anxious,
     isDefault: false
   },
-  [FeelingFilterKey.BurnedOut]: {
-    key: "feeling-burned-out",
-    name: "Burned out",
+  [IssueFilterKey.BurnedOut]: {
+    key: "issue-burnout",
+    name: "Burnout & Stress",
     predicate: feelingPredicates.burnedOut,
     isDefault: false
   },
-  [FeelingFilterKey.NeedHelp]: {
-    key: "feeling-need-help",
-    name: "Down",
+  [IssueFilterKey.NeedHelp]: {
+    key: "issue-down",
+    name: "Sadness and self-doubt",
     predicate: feelingPredicates.needHelp,
     isDefault: false
   },
-  [FeelingFilterKey.NeedCareerHelp]: {
-    key: "feeling-need-career-help",
-    name: "Directionless",
+  [IssueFilterKey.NeedCareerHelp]: {
+    key: "issue-directionless",
+    name: "Feelings of directionlessness",
     predicate: feelingPredicates.needCareerHelp,
     isDefault: false
   },
-  [FeelingFilterKey.NeedCommunity]: {
-    key: "feeling-need-community",
-    name: "Lonely",
+  [IssueFilterKey.NeedCommunity]: {
+    key: "issue-alone",
+    name: "Feelings of loneliness",
     predicate: feelingPredicates.needCommunity,
     isDefault: false
   },
-  [FeelingFilterKey.Home]: {
-    key: "feeling-home",
-    name: "Family issues",
+  [IssueFilterKey.Home]: {
+    key: "issue-family",
+    name: "Family Issues",
     predicate: feelingPredicates.home,
     isDefault: false
   }
@@ -50,47 +50,47 @@ export const feelingFilters = {
 
 export const filterQuestions: FilterQuestionGroup[] = [
   {
-    question: "I'm feeling...",
+    question: "I'm facing...",
     filters: [
       {
-        key: "feeling-not-sure",
+        key: "issue-not-sure",
         name: "Not sure",
         predicate: feelingPredicates.noPreference,
         isDefault: true
       },
       {
-        key: "feeling-anxious",
-        name: "Anxious",
+        key: "issue-anxiety",
+        name: "Anxiety & Worry",
         predicate: feelingPredicates.anxious,
         isDefault: false
       },
       {
-        key: "feeling-burned-out",
-        name: "Burned out",
+        key: "issue-burnout",
+        name: "Burnout & Stress",
         predicate: feelingPredicates.burnedOut,
         isDefault: false
       },
       {
-        key: "feeling-need-help",
-        name: "Down",
+        key: "issue-down",
+        name: "Sadness and self-doubt",
         predicate: feelingPredicates.needHelp,
         isDefault: false
       },
       {
-        key: "feeling-need-career-help",
-        name: "Directionless",
+        key: "issue-directionless",
+        name: "Feelings of directionlessness",
         predicate: feelingPredicates.needCareerHelp,
         isDefault: false
       },
       {
-        key: "feeling-need-community",
-        name: "Lonely",
+        key: "issue-alone",
+        name: "Feelings of loneliness",
         predicate: feelingPredicates.needCommunity,
         isDefault: false
       },
       {
-        key: "feeling-home",
-        name: "Family issues",
+        key: "issue-family",
+        name: "Family Issues",
         predicate: feelingPredicates.home,
         isDefault: false
       }

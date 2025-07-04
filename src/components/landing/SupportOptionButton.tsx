@@ -1,8 +1,8 @@
 "use client";
 import { useContext } from "react";
 import { CurrentResourceContext } from "../CurrentResourceProvider";
-import { Tag, FeelingFilterKey } from "@/types/filters";
-import { feelingFilters } from "../filters/FilterConfig";
+import { Tag, IssueFilterKey } from "@/types/filters";
+import { issueFilters } from "../filters/FilterConfig";
 import { ViewType } from "@/types/views";
 
 export interface SupportOption {
@@ -10,7 +10,7 @@ export interface SupportOption {
   label: string;
   tag: Tag;
   color: string;
-  filterKey: FeelingFilterKey; // Key to identify the corresponding filter
+  filterKey: IssueFilterKey; // Key to identify the corresponding filter
 }
 
 export default function SupportOptionButton({ supportOption, setViewType }: { supportOption: SupportOption, setViewType: (viewType: ViewType) => void }) {
@@ -18,7 +18,7 @@ export default function SupportOptionButton({ supportOption, setViewType }: { su
   const addFilter = ctx?.addFilter;
 
   const handleOptionClick = (option: SupportOption) => {
-    const filter = feelingFilters[option.filterKey];
+    const filter = issueFilters[option.filterKey];
     if (addFilter && filter) {
       addFilter(filter);
     }
