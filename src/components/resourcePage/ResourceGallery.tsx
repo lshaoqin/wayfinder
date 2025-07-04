@@ -12,7 +12,8 @@ import Image from 'next/image';
 import { ResourceTypes } from '@/types/resources';
 
 export default function ResourceGallery({ items }: { items: ResourceGalleryItem[] }) {
-    const processedItems = items.length > 0 ? items : [
+    const filteredItems = items.filter(item => item.type === ResourceTypes.Photo || (item.type === ResourceTypes.Video && item.url.includes('youtube.com')));
+    const processedItems = filteredItems.length > 0 ? filteredItems : [
     {
       type: ResourceTypes.Photo,
       url: 'https://images.unsplash.com/vector-1739203267529-6e1852ec52f5?q=80&w=2064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
