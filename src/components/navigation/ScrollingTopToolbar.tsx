@@ -68,7 +68,7 @@ export default function ScrollingTopToolbar({ resourceId, numResources, paginate
             {filterMatchInfo.includes("Supermatch") ? (
               <span className="text-green-600 font-bold">{filterMatchInfo}</span>
             ) : filterMatchInfo.includes("Matched:") ? (
-              <span className="text-blue-600">{filterMatchInfo}</span>
+              <span className="text-blue-500">{filterMatchInfo}</span>
             ) : (
               <span className="text-gray-600">{filterMatchInfo}</span>
             )}

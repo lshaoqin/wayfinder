@@ -27,7 +27,7 @@ export default function ResourcePageBottomToolbar({
           {resource.get_started_website && (
             
               <Button
-                className="w-full bg-blue-300"
+                className="w-full bg-blue-400 text-white hover:bg-blue-700"
                 size="lg"
                 onClick={() => setOpen(true)}
               >
