@@ -9,6 +9,15 @@ export enum Tag {
     Home = 'home'
 }
 
+export enum FeelingFilterKey {
+    Anxious = 'anxious',
+    BurnedOut = 'burnedOut',
+    NeedHelp = 'needHelp',
+    NeedCareerHelp = 'needCareerHelp',
+    NeedCommunity = 'needCommunity',
+    Homesick = 'homesick'
+}
+
 export type Filter = {
     key: string;
     name: string;

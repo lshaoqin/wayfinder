@@ -1,4 +1,4 @@
-import { FilterQuestionGroup } from "@/types/filters";
+import { FilterQuestionGroup, FeelingFilterKey } from "@/types/filters";
 import { 
   costPredicates,
   timingPredicates,
@@ -7,6 +7,46 @@ import {
   modalityPredicates,
   feelingPredicates
 } from "./FilterHelpers";
+
+// Export feeling filters for use in SupportOptionButton
+export const feelingFilters = {
+  [FeelingFilterKey.Anxious]: {
+    key: "feeling-anxious",
+    name: "Anxious",
+    predicate: feelingPredicates.anxious,
+    isDefault: false
+  },
+  [FeelingFilterKey.BurnedOut]: {
+    key: "feeling-burned-out",
+    name: "Burned out",
+    predicate: feelingPredicates.burnedOut,
+    isDefault: false
+  },
+  [FeelingFilterKey.NeedHelp]: {
+    key: "feeling-need-help",
+    name: "Need help",
+    predicate: feelingPredicates.needHelp,
+    isDefault: false
+  },
+  [FeelingFilterKey.NeedCareerHelp]: {
+    key: "feeling-need-career-help",
+    name: "Need career help",
+    predicate: feelingPredicates.needCareerHelp,
+    isDefault: false
+  },
+  [FeelingFilterKey.NeedCommunity]: {
+    key: "feeling-need-community",
+    name: "Alone",
+    predicate: feelingPredicates.needCommunity,
+    isDefault: false
+  },
+  [FeelingFilterKey.Homesick]: {
+    key: "feeling-homesick",
+    name: "Homesick",
+    predicate: feelingPredicates.homesick,
+    isDefault: false
+  }
+};
 
 export const filterQuestions: FilterQuestionGroup[] = [
   {

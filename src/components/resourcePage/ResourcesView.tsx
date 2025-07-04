@@ -96,26 +96,34 @@ export default function PageSwiper() {
           resistanceRatio={0.85}
           onSlideChangeTransitionEnd={() => {
             // Reset scroll position to top after slide change with smooth animation
-            const activeSlide = swiperRef.current?.el.querySelector('.swiper-slide-active');
-            if (activeSlide) {
-              // Smoothly scroll the active slide to top
-              activeSlide.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-              });
-              
-              // Also smoothly scroll any child elements with overflow
-              const scrollableChildren = activeSlide.querySelectorAll('.overflow-auto, .overflow-y-auto');
-              scrollableChildren.forEach(element => {
-                if (element) {
-                  (element as HTMLElement).scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                  });
-                }
-              });
-              
-              // Force window to smoothly scroll to top as well
+            if (swiperRef.current && swiperRef.current.el) {
+              const activeSlide = swiperRef.current.el.querySelector('.swiper-slide-active');
+              if (activeSlide) {
+                // Smoothly scroll the active slide to top
+                activeSlide.scrollTo({
+                  top: 0,
+                  behavior: 'smooth'
+                });
+                
+                // Also smoothly scroll any child elements with overflow
+                const scrollableChildren = activeSlide.querySelectorAll('.overflow-auto, .overflow-y-auto');
+                scrollableChildren.forEach(element => {
+                  if (element) {
+                    (element as HTMLElement).scrollTo({
+                      top: 0,
+                      behavior: 'smooth'
+                    });
+                  }
+                });
+                
+                // Force window to smoothly scroll to top as well
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth'
+                });
+              }
+            } else {
+              // If swiper isn't available, just scroll window to top
               window.scrollTo({
                 top: 0,
                 behavior: 'smooth'

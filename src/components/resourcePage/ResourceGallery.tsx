@@ -64,7 +64,7 @@ export default function ResourceGallery({ items }: { items: ResourceGalleryItem[
           nested={true}
           grabCursor={true}
           touchMoveStopPropagation={processedItems.length > 1}
-          onTouchStart={processedItems.length > 1 ? (swiper, event) => {
+          onTouchStart={processedItems.length > 1 ? (_swiper, event) => {
             event.stopPropagation();
           } : undefined}
           style={{
