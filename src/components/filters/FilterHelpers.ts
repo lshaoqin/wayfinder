@@ -1,4 +1,5 @@
 import { Resource } from "@/types/resources";
+import { Tag } from "@/types/filters";
 import opening_hours from "opening_hours";
 
 /**
@@ -9,6 +10,17 @@ import opening_hours from "opening_hours";
 export const sharedPredicates = {
   // Always returns true - used for "no preference" options
   noPreference: (_r: Resource) => true
+};
+
+// Feeling predicates based on tags
+export const feelingPredicates = {
+  noPreference: sharedPredicates.noPreference,
+  anxious: (r: Resource) => r.tags.includes(Tag.Anxiety),
+  burnedOut: (r: Resource) => r.tags.includes(Tag.Burnout),
+  needCareerHelp: (r: Resource) => r.tags.includes(Tag.Career),
+  needCommunity: (r: Resource) => r.tags.includes(Tag.Community),
+  needHelp: (r: Resource) => r.tags.includes(Tag.Help),
+  homesick: (r: Resource) => r.tags.includes(Tag.Home)
 };
 
 // Cost predicates

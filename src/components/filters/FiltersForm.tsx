@@ -16,13 +16,6 @@ export default function FiltersView({ setViewType }: { setViewType: (viewType: V
         <div className="p-4">
             <h2 className="text-xl font-bold mb-4">Filters</h2>
             
-            {/* Display active filter count */}
-            {activeFilterCount > 0 && (
-                <div className="mb-4 text-sm font-medium text-blue-600">
-                    {activeFilterCount} active filter{activeFilterCount !== 1 ? 's' : ''}
-                </div>
-            )}
-            
             {filterQuestions.map((group) => (
                 <FilterQuestion key={group.question} group={group} />
             ))}

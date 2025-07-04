@@ -4,10 +4,52 @@ import {
   timingPredicates,
   availabilityPredicates,
   anonymityPredicates,
-  modalityPredicates 
+  modalityPredicates,
+  feelingPredicates
 } from "./FilterHelpers";
 
 export const filterQuestions: FilterQuestionGroup[] = [
+  {
+    question: "I'm feeling...",
+    filters: [
+      {
+        key: "feeling-not-sure",
+        name: "Not sure",
+        predicate: feelingPredicates.noPreference,
+        isDefault: true
+      },
+      {
+        key: "feeling-anxious",
+        name: "Anxious",
+        predicate: feelingPredicates.anxious,
+        isDefault: false
+      },
+      {
+        key: "feeling-burned-out",
+        name: "Burned out",
+        predicate: feelingPredicates.burnedOut,
+        isDefault: false
+      },
+      {
+        key: "feeling-need-career-help",
+        name: "Need career help",
+        predicate: feelingPredicates.needCareerHelp,
+        isDefault: false
+      },
+      {
+        key: "feeling-need-community",
+        name: "Need community",
+        predicate: feelingPredicates.needCommunity,
+        isDefault: false
+      },
+      {
+        key: "feeling-homesick",
+        name: "Homesick",
+        predicate: feelingPredicates.homesick,
+        isDefault: false
+      }
+    ]
+  },
   {
     question: "Cost",
     filters: [
