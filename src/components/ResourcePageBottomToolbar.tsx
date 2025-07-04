@@ -9,17 +9,16 @@ export default function ResourcePageBottomToolbar({
 }: {
   resource: Resource | null;
 }) {
-  if (!resource) return null;
+
   const [open, setOpen] = useState(false);
-const content = resource.steps
+  if (!resource) return null;
+  const content = resource.steps
   ? resource.steps
   : `
 1. Go to the [website](${resource.get_started_website || "#"})
 2. Click on **'Sign Up'**
 3. Fill out your details and submit the form
 `;
-
-
 
   return (
     <>
