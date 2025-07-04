@@ -1,5 +1,5 @@
 import { ViewType } from "@/types/views";
-import SOSbutton from "./SOSbutton";
+import SosSection from "./SosSection";
 import SupportGrid from "./SupportGrid";
 
 export default function LandingView({ setViewType }: { setViewType: (viewType: ViewType) => void }) {
@@ -10,7 +10,7 @@ export default function LandingView({ setViewType }: { setViewType: (viewType: V
           <p className="text-sm text-gray-500 mt-1">Let&apos;s find resources that might help</p>
         </div>
         <SupportGrid setViewType={setViewType}/>
-        <SOSbutton />
+        <SosSection />
       </div>
   
     )

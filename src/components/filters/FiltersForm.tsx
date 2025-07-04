@@ -16,7 +16,7 @@ export default function FiltersView({ setViewType }: { setViewType: (viewType: V
     return (
         <div className="flex flex-col h-full">
             <div className="flex-1 overflow-auto p-4 pb-24">
-                <h2 className="text-xl font-bold mb-4">Let's find resources to help</h2>
+                <h2 className="text-xl font-bold mb-4">Let&apos;s find resources to help</h2>
                 
                 {filterQuestions.map((group) => (
                     <FilterQuestion key={group.question} group={group} />
