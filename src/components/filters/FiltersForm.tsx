@@ -14,7 +14,7 @@ export default function FiltersView({ setViewType }: { setViewType: (viewType: V
     
     return (
         <div className="p-4">
-            <h2 className="text-xl font-bold mb-4">Filter Resources</h2>
+            <h2 className="text-xl font-bold mb-4">Filters</h2>
             
             {/* Display active filter count */}
             {activeFilterCount > 0 && (
@@ -29,17 +29,17 @@ export default function FiltersView({ setViewType }: { setViewType: (viewType: V
             
             <div className="mt-6 flex space-x-4">
                 <button 
+                    onClick={() => setViewType(ViewType.ResourceList)} 
+                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                >
+                    Done
+                </button>
+                <button 
                     onClick={reset} 
                     className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100"
                     disabled={!activeFilterCount}
                 >
                     Clear Filters
-                </button>
-                <button 
-                    onClick={() => setViewType(ViewType.ResourceList)} 
-                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-                >
-                    Done
                 </button>
             </div>
         </div>

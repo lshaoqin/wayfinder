@@ -32,11 +32,18 @@ export default function FilterQuestion({ group }: { group: FilterQuestionGroup }
   };
 
   return (
-    <div className="flex flex-col">
-      <h3 className="text-lg font-semibold mb-2">{group.question}</h3>
-      {group.filters.map((filter) => (
-        <FilterButton filter={filter} key={filter.key} isActive={activeFilter?.key === filter.key} onClick={() => handleClick(filter)} />
-      ))}
+    <div className="mb-4">
+      <h3 className="text-sm font-medium text-gray-600 mb-2">{group.question}</h3>
+      <div className="flex flex-wrap">
+        {group.filters.map((filter) => (
+          <FilterButton 
+            filter={filter} 
+            key={filter.key} 
+            isActive={activeFilter?.key === filter.key} 
+            onClick={() => handleClick(filter)} 
+          />
+        ))}
+      </div>
     </div>
   );
 }

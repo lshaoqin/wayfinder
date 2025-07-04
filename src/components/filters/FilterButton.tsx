@@ -11,9 +11,9 @@ export default function FilterButton({ filter, isActive, onClick }: FilterButton
   return (
     <button 
       onClick={onClick}
-      className={`px-4 py-2 rounded-md border transition-all ${isActive 
+      className={`px-3 py-1 text-sm rounded-full mr-2 mb-2 transition-all ${isActive 
         ? 'bg-primary text-primary-foreground font-medium' 
-        : 'bg-gray-200 text-gray-700 border-transparent hover:bg-gray-300'}`}
+        : 'bg-gray-100 text-gray-700 border border-gray-200 hover:bg-gray-200'}`}
     >
       {filter.name}
     </button>
