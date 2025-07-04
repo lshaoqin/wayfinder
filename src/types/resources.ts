@@ -27,4 +27,5 @@ export type Resource = {
   org_website?: string;
   gallery?: ResourceGalleryItem[];
   steps: string;
+  availability: string;
 };

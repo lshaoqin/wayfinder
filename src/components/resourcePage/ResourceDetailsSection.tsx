@@ -1,9 +1,8 @@
 import { Resource } from "@/types/resources";
-import opening_hours from "opening_hours";
 import { Card } from "../ui/card";
+import { timingPredicates } from "../filters/FilterHelpers";
 
 export default function ResourceDetailsSection({ resource }: { resource: Resource}) {
-  const hours = new opening_hours(resource.opening_hours);
 
 const DAY_MAP: Record<string, string> = {
   mo: "Monday",
@@ -32,7 +31,7 @@ const googleMapsUrl = resource.location
         <h2 className="text-lg font-semibold">Opening Hours</h2>
           <div className="flex items-baseline gap-2">
             <p className="text-gray-700">{prettifyOpeningHours(resource.opening_hours)}</p>
-            {hours.getState() && 
+            {timingPredicates.openNow(resource) && 
               <p className="text-green-600">(Open!)</p>
             }
           </div>

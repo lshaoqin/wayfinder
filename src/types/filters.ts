@@ -10,6 +10,13 @@ export enum Tag {
 }
 
 export type Filter = {
+    key: string;
     name: string;
     predicate: (r: Resource) => boolean;
+    isDefault: boolean;
+}
+
+export type FilterQuestionGroup = {
+    question: string;
+    filters: Filter[];
 }

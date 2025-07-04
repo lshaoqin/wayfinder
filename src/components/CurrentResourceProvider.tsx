@@ -7,9 +7,10 @@ export const CurrentResourceContext = createContext<{
   resources: Resource[];
   filtered: Resource[];
   currentIndex: number;
-  currentFilter: Filter | null;
+  currentFilters: Filter[] | null;
   filter: (predicate: (r: Resource) => boolean) => void;
-  setCurrentFilter: (filter: Filter) => void;
+  addFilter: (filter: Filter) => void;
+  removeFilter: (filter: Filter) => void;
   next: () => void;
   prev: () => void;
   reset: () => void;
@@ -20,7 +21,7 @@ type ResourceState = {
   resources: Resource[];
   filtered: Resource[];
   currentIndex: number;
-  currentFilter: Filter | null;
+  currentFilters: Filter[] | null;
 };
 
 type ResourceAction =
@@ -29,7 +30,8 @@ type ResourceAction =
   | { type: "NEXT" }
   | { type: "PREV" }
   | { type: "RESET" }
-  | { type: "SET_CURRENT_FILTER"; filter: Filter };
+  | { type: "ADD_FILTER"; filter: Filter }
+  | { type: "REMOVE_FILTER"; filter: Filter };
 
 function resourceReducer(state: ResourceState, action: ResourceAction) {
   switch (action.type) {
@@ -37,15 +39,18 @@ function resourceReducer(state: ResourceState, action: ResourceAction) {
       return { ...state, resources: action.resources, filtered: action.resources, currentIndex: 0 };
     case "FILTER":
       return { ...state, filtered: state.resources.filter(action.predicate), currentIndex: 0 };
-    case "SET_CURRENT_FILTER":
-      return { ...state, currentFilter: action.filter, filtered: state.resources.filter((resource) =>
+    case "ADD_FILTER":
+      return { ...state, currentFilters: [...(state.currentFilters || []), action.filter], filtered: state.resources.filter((resource) =>
+        action.filter.predicate(resource))};
+    case "REMOVE_FILTER":
+      return { ...state, currentFilters: state.currentFilters ? state.currentFilters.filter(f => f.key !== action.filter.key) : null, filtered: state.resources.filter((resource) =>
         action.filter.predicate(resource))};
     case "NEXT":
       return { ...state, currentIndex: Math.min(state.currentIndex + 1, state.filtered.length - 1) };
     case "PREV":
       return { ...state, currentIndex: Math.max(state.currentIndex - 1, 0) };
     case "RESET":
-      return { ...state, filtered: state.resources, currentFilter: null, currentIndex: 0 };
+      return { ...state, filtered: state.resources, currentFilters: null, currentIndex: 0 };
     default:
       return state;
   }
@@ -56,7 +61,7 @@ export function CurrentResourceProvider({ children }: { children: ReactNode }) {
     resources: [],
     filtered: [],
     currentIndex: 0,
-    currentFilter: null,
+    currentFilters: null,
   });
 
   useEffect(() => {
@@ -71,9 +76,10 @@ export function CurrentResourceProvider({ children }: { children: ReactNode }) {
     resources: state.resources,
     filtered: state.filtered,
     currentIndex: state.currentIndex,
-    currentFilter: state.currentFilter,
+    currentFilters: state.currentFilters,
     filter: (predicate: (r: Resource) => boolean) => dispatch({ type: "FILTER", predicate }),
-    setCurrentFilter: (filter: Filter) => dispatch({ type: "SET_CURRENT_FILTER", filter }),
+    addFilter: (filter: Filter) => dispatch({ type: "ADD_FILTER", filter }),
+    removeFilter: (filter: Filter) => dispatch({ type: "REMOVE_FILTER", filter }),
     next: () => dispatch({ type: "NEXT" }),
     prev: () => dispatch({ type: "PREV" }),
     reset: () => dispatch({ type: "RESET" }),

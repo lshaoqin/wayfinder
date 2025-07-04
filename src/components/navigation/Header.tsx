@@ -1,16 +1,18 @@
 "use client";
 import { useContext } from "react";
 import { CurrentResourceContext } from "@/components/CurrentResourceProvider";
-import { Button } from "@/components/ui/button";
-import { Home } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { ViewType } from "@/types/views";
+import { Button } from "../ui/button";
+import { Filter } from "lucide-react";
 
-export default function Header() {
+export default function Header({ setViewType }: { setViewType: (viewType: ViewType) => void }) {
   const ctx = useContext(CurrentResourceContext);
   const reset = ctx?.reset;
 
   const handleResetClick = () => {
     reset?.();
+    setViewType(ViewType.Landing);
   };
 
   return (
@@ -24,16 +26,13 @@ export default function Header() {
         </Avatar>
         <h1 className="text-lg font-bold text-gray-700">Wayfinder</h1>
       </div>
-      <div className="flex gap-2">
-        <Button 
-          onClick={handleResetClick} 
-          variant="ghost" 
-          size="icon" 
-          className="h-8 w-8"
-        >
-          <Home className="h-4 w-4" />
-        </Button>
-      </div>
+      <Button
+        onClick={() => setViewType(ViewType.Filters)}
+        className="text-gray-700 hover:text-gray-800 text-lg font-bold"
+        aria-label="Filters"
+      >
+        <Filter className="w-5 h-5" />
+      </Button>
     </header>
   );
 }

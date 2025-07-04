@@ -13,10 +13,10 @@ export interface SupportOption {
 
 export default function SupportOptionButton({ supportOption }: { supportOption: SupportOption }) {
   const ctx = useContext(CurrentResourceContext);
-  const setCurrentFilter = ctx?.setCurrentFilter;
+  const addFilter = ctx?.addFilter;
 
   const handleOptionClick = (option: SupportOption) => {
-    setCurrentFilter?.({ name: `${option.emoji} ${option.label}`, predicate: (r: Resource) => r.tags.includes(option.tag) });
+    addFilter?.({ key: `${option.label}`, name: `${option.emoji} ${option.label}`, predicate: (r: Resource) => r.tags.includes(option.tag), isDefault: false });
   };
 
 
