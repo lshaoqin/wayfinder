@@ -1,11 +1,11 @@
 "use client";
 import { CurrentResourceProvider } from "@/components/CurrentResourceProvider";
-import SupportGrid from "@/components/SupportGrid";
-import Header from "@/components/Header";
-import PageSwiper from "@/components/PageSwiper";
+import SupportGrid from "@/components/landing/SupportGrid";
+import Header from "@/components/navigation/Header";
+import PageSwiper from "@/components/navigation/PageSwiper";
 import { useContext } from "react";
 import { CurrentResourceContext } from "@/components/CurrentResourceProvider";
-import SOSbutton from "@/components/SOSbutton";
+import SOSbutton from "@/components/landing/SOSbutton";
 
 function ResourceSection() {
   const ctx = useContext(CurrentResourceContext);

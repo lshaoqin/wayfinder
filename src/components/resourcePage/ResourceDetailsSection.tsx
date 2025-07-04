@@ -1,6 +1,6 @@
 import { Resource } from "@/types/resources";
 import opening_hours from "opening_hours";
-import { Card } from "./ui/card";
+import { Card } from "../ui/card";
 
 export default function ResourceDetailsSection({ resource }: { resource: Resource}) {
   const hours = new opening_hours(resource.opening_hours);

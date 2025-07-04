@@ -10,9 +10,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/virtual';
 
 import ScrollingTopToolbar from "./ScrollingTopToolbar";
-import { CurrentResourceContext } from "./CurrentResourceProvider";
-import ResourcePage from "./ResourcePage";
-import ResourcePageBottomToolbar from "./ResourcePageBottomToolbar";
+import { CurrentResourceContext } from "../CurrentResourceProvider";
+import ResourcePage from "../resourcePage/ResourcePage";
+import ResourcePageBottomToolbar from "../resourcePage/ResourcePageBottomToolbar";
 
 export default function PageSwiper() {
   const swiperRef = useRef<SwiperType | null>(null);

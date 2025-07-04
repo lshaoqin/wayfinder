@@ -1,5 +1,5 @@
 import { Comment } from "@/types/comments";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 export default function FeaturedCommentSection({ comment }: { comment: Comment }) {
   return (

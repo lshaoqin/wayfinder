@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Resource } from '@/types/resources';
-import CommentLikes from './CommentLikes';
+import CommentLikes from '../comments/CommentLikes';
 import GetStartedGuide from "./GetStartedGuide";
 import { useState } from "react";
 

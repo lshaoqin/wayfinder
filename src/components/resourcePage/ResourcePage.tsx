@@ -1,7 +1,7 @@
 import { Resource } from "@/types/resources";
 import KeyMetricsSection from "./KeyMetricsSection";
-import CommentsSection from "./CommentsSection";
-import FeaturedCommentSection from "./FeaturedCommentSection";
+import CommentsSection from "../comments/CommentsSection";
+import FeaturedCommentSection from "../comments/FeaturedCommentSection";
 import ResourceDetailsSection from "./ResourceDetailsSection";
 import ResourceGallery from "./ResourceGallery";
 

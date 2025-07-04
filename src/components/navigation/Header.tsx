@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { CurrentResourceContext } from "@/components/CurrentResourceProvider";
 import { Button } from "@/components/ui/button";
 import { Home } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 export default function Header() {
   const ctx = useContext(CurrentResourceContext);

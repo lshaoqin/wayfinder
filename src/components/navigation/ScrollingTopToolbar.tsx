@@ -1,6 +1,6 @@
 "use client";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { CurrentResourceContext } from "./CurrentResourceProvider";
+import { CurrentResourceContext } from "../CurrentResourceProvider";
 import { useContext } from "react";
 
 type ScrollingTopToolbarProps = {

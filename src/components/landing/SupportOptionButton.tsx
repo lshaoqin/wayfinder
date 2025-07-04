@@ -1,6 +1,6 @@
 "use client";
 import { useContext } from "react";
-import { CurrentResourceContext } from "./CurrentResourceProvider";
+import { CurrentResourceContext } from "../CurrentResourceProvider";
 import { Tag } from "@/types/filters";
 import { Resource } from "@/types/resources";
 
