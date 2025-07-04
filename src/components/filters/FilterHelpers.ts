@@ -20,7 +20,7 @@ export const feelingPredicates = {
   needCareerHelp: (r: Resource) => r.tags.includes(Tag.Career),
   needCommunity: (r: Resource) => r.tags.includes(Tag.Community),
   needHelp: (r: Resource) => r.tags.includes(Tag.Help),
-  homesick: (r: Resource) => r.tags.includes(Tag.Home)
+  home: (r: Resource) => r.tags.includes(Tag.Home)
 };
 
 // Cost predicates

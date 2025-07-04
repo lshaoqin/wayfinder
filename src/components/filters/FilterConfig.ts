@@ -24,26 +24,26 @@ export const feelingFilters = {
   },
   [FeelingFilterKey.NeedHelp]: {
     key: "feeling-need-help",
-    name: "Need help",
+    name: "Down",
     predicate: feelingPredicates.needHelp,
     isDefault: false
   },
   [FeelingFilterKey.NeedCareerHelp]: {
     key: "feeling-need-career-help",
-    name: "Need career help",
+    name: "Directionless",
     predicate: feelingPredicates.needCareerHelp,
     isDefault: false
   },
   [FeelingFilterKey.NeedCommunity]: {
     key: "feeling-need-community",
-    name: "Alone",
+    name: "Lonely",
     predicate: feelingPredicates.needCommunity,
     isDefault: false
   },
-  [FeelingFilterKey.Homesick]: {
-    key: "feeling-homesick",
-    name: "Homesick",
-    predicate: feelingPredicates.homesick,
+  [FeelingFilterKey.Home]: {
+    key: "feeling-home",
+    name: "Family issues",
+    predicate: feelingPredicates.home,
     isDefault: false
   }
 };
@@ -71,21 +71,27 @@ export const filterQuestions: FilterQuestionGroup[] = [
         isDefault: false
       },
       {
+        key: "feeling-need-help",
+        name: "Down",
+        predicate: feelingPredicates.needHelp,
+        isDefault: false
+      },
+      {
         key: "feeling-need-career-help",
-        name: "Need career help",
+        name: "Directionless",
         predicate: feelingPredicates.needCareerHelp,
         isDefault: false
       },
       {
         key: "feeling-need-community",
-        name: "Need community",
+        name: "Lonely",
         predicate: feelingPredicates.needCommunity,
         isDefault: false
       },
       {
-        key: "feeling-homesick",
-        name: "Homesick",
-        predicate: feelingPredicates.homesick,
+        key: "feeling-home",
+        name: "Family issues",
+        predicate: feelingPredicates.home,
         isDefault: false
       }
     ]

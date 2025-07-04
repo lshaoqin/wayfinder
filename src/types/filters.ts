@@ -15,7 +15,7 @@ export enum FeelingFilterKey {
     NeedHelp = 'needHelp',
     NeedCareerHelp = 'needCareerHelp',
     NeedCommunity = 'needCommunity',
-    Homesick = 'homesick'
+    Home = 'home'
 }
 
 export type Filter = {

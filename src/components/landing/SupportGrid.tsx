@@ -7,7 +7,7 @@ const options: SupportOption[] = [
   { emoji: '😔', label: 'Feeling Alone', tag: Tag.Community, color: 'bg-purple-100', filterKey: FeelingFilterKey.NeedCommunity },
   { emoji: '😵', label: 'Burnout & Stress', tag: Tag.Burnout, color: 'bg-red-100', filterKey: FeelingFilterKey.BurnedOut },
   { emoji: '💙', label: 'Feeling Down', tag: Tag.Help, color: 'bg-orange-100', filterKey: FeelingFilterKey.NeedHelp },
-  { emoji: '🏡', label: 'Family Issues', tag: Tag.Home, color: 'bg-yellow-100', filterKey: FeelingFilterKey.Homesick },
+  { emoji: '🏡', label: 'Family Issues', tag: Tag.Home, color: 'bg-yellow-100', filterKey: FeelingFilterKey.Home },
   { emoji: '📚', label: 'Feel Directionless', tag: Tag.Career, color: 'bg-green-100', filterKey: FeelingFilterKey.NeedCareerHelp },
 ];
 
