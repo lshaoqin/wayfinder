@@ -28,4 +28,5 @@ export type Resource = {
   gallery?: ResourceGalleryItem[];
   steps: string;
   availability: string;
+  filtersSatisfied?: { [key: string]: boolean }; // Track which filters are satisfied
 };

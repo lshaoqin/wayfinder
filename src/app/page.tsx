@@ -12,10 +12,10 @@ export default function Home() {
   const [viewType, setViewType] = useState<ViewType>(ViewType.Landing);
   return (
     <CurrentResourceProvider>
-      <Header setViewType={setViewType}/>
+      <Header viewType={viewType} setViewType={setViewType}/>
       <div className="mt-24">
         {viewType === ViewType.Landing && <LandingView />}
-        {viewType === ViewType.Filters && <FiltersView />}
+        {viewType === ViewType.Filters && <FiltersView setViewType={setViewType} />}
         {viewType === ViewType.ResourceList && <ResourcesView />}
       </div>
     </CurrentResourceProvider>

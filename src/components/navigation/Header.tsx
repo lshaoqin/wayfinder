@@ -6,13 +6,21 @@ import { ViewType } from "@/types/views";
 import { Button } from "../ui/button";
 import { Filter } from "lucide-react";
 
-export default function Header({ setViewType }: { setViewType: (viewType: ViewType) => void }) {
+export default function Header({ viewType, setViewType }: { viewType: ViewType; setViewType: (viewType: ViewType) => void }) {
   const ctx = useContext(CurrentResourceContext);
   const reset = ctx?.reset;
 
   const handleResetClick = () => {
     reset?.();
     setViewType(ViewType.Landing);
+  };
+
+  const handleFilterClick = () => {
+    if (viewType === ViewType.Filters) {
+      setViewType(ViewType.ResourceList);
+    } else {
+      setViewType(ViewType.Filters);
+    }
   };
 
   return (
@@ -27,9 +35,10 @@ export default function Header({ setViewType }: { setViewType: (viewType: ViewTy
         <h1 className="text-lg font-bold text-gray-700">Wayfinder</h1>
       </div>
       <Button
-        onClick={() => setViewType(ViewType.Filters)}
+        onClick={handleFilterClick}
         className="text-gray-700 hover:text-gray-800 text-lg font-bold"
         aria-label="Filters"
+        variant={viewType === ViewType.Filters ? "default" : "outline"}
       >
         <Filter className="w-5 h-5" />
       </Button>

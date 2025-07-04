@@ -40,11 +40,35 @@ function resourceReducer(state: ResourceState, action: ResourceAction) {
     case "FILTER":
       return { ...state, filtered: state.resources.filter(action.predicate), currentIndex: 0 };
     case "ADD_FILTER":
-      return { ...state, currentFilters: [...(state.currentFilters || []), action.filter], filtered: state.resources.filter((resource) =>
-        action.filter.predicate(resource))};
+      // If filter is default, do nothing
+      if (action.filter.isDefault) {
+        return state;
+      }
+      // Add the filter and update filtered resources
+      const newFilters = [...(state.currentFilters || []), action.filter];
+      return { 
+        ...state, 
+        currentFilters: newFilters,
+        filtered: filterAndSortResources(state.resources, newFilters),
+        currentIndex: 0
+      };
     case "REMOVE_FILTER":
-      return { ...state, currentFilters: state.currentFilters ? state.currentFilters.filter(f => f.key !== action.filter.key) : null, filtered: state.resources.filter((resource) =>
-        action.filter.predicate(resource))};
+      // If filter is default, do nothing
+      if (action.filter.isDefault) {
+        return state;
+      }
+      // Remove the filter and update filtered resources
+      const remainingFilters = state.currentFilters ? 
+        state.currentFilters.filter(f => f.key !== action.filter.key) : 
+        null;
+      return { 
+        ...state, 
+        currentFilters: remainingFilters,
+        filtered: remainingFilters && remainingFilters.length > 0 ? 
+          filterAndSortResources(state.resources, remainingFilters) : 
+          state.resources,
+        currentIndex: 0
+      };
     case "NEXT":
       return { ...state, currentIndex: Math.min(state.currentIndex + 1, state.filtered.length - 1) };
     case "PREV":
@@ -54,6 +78,46 @@ function resourceReducer(state: ResourceState, action: ResourceAction) {
     default:
       return state;
   }
+}
+
+/**
+ * Filter resources that satisfy at least one filter and sort by number of filters satisfied
+ */
+function filterAndSortResources(resources: Resource[], filters: Filter[]): Resource[] {
+  if (!filters || filters.length === 0) return resources;
+  
+  // Compute which filters are satisfied for each resource
+  const resourcesWithFilters = resources.map(resource => {
+    // Create a new filtersSatisfied object
+    const filtersSatisfied: { [key: string]: boolean } = {};
+    let satisfiesAnyFilter = false;
+    
+    // Check each filter
+    filters.forEach(filter => {
+      const isSatisfied = filter.predicate(resource);
+      filtersSatisfied[filter.key] = isSatisfied;
+      if (isSatisfied) satisfiesAnyFilter = true;
+    });
+    
+    // Return resource with filtersSatisfied attribute
+    return {
+      ...resource,
+      filtersSatisfied
+    };
+  });
+  
+  // Filter resources that satisfy at least one filter
+  const filtered = resourcesWithFilters.filter(resource => {
+    // Check if the resource satisfies at least one filter using the filtersSatisfied attribute
+    return Object.values(resource.filtersSatisfied || {}).some(satisfied => satisfied);
+  });
+  
+  // Sort by number of filters satisfied (descending)
+  return filtered.sort((a, b) => {
+    const aCount = Object.values(a.filtersSatisfied || {}).filter(Boolean).length;
+    const bCount = Object.values(b.filtersSatisfied || {}).filter(Boolean).length;
+    return bCount - aCount; // Descending order
+  });
 }
 
 export function CurrentResourceProvider({ children }: { children: ReactNode }) {

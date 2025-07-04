@@ -1,23 +1,34 @@
 "use client";
 import { Filter, FilterQuestionGroup } from "@/types/filters";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { CurrentResourceContext } from "../CurrentResourceProvider";
 import FilterButton from "./FilterButton";
 
 export default function FilterQuestion({ group }: { group: FilterQuestionGroup }) {
-  const [activeFilter, setActiveFilter] = useState<Filter | null>(null);
   const ctx = useContext(CurrentResourceContext);
-  const { addFilter, removeFilter } = ctx;
+  const { addFilter, removeFilter, currentFilters } = ctx;
+  
+  // Find the default filter in this group
+  const defaultFilter = group.filters.find(filter => filter.isDefault) || null;
+  
+  // Find the active filter in this group (if any)
+  const activeFilter = currentFilters?.find(filter => 
+    group.filters.some(groupFilter => groupFilter.key === filter.key)
+  ) || defaultFilter;
 
   const handleClick = (filter: Filter) => {
-    if (activeFilter?.key === filter.key) {
-      removeFilter(filter);
-      setActiveFilter(null);
-    } else {
-      removeFilter(filter); // Only one filter in a group can be active at a time
-      addFilter(filter);
-      setActiveFilter(filter);
+    // If the filter is already active, do nothing
+    if (activeFilter?.key === filter.key) return;
+  
+    // If there's an active filter in this group, remove it first
+    if (activeFilter) {
+      const currentActiveFilter = group.filters.find(f => f.key === activeFilter.key);
+      if (currentActiveFilter) {
+        removeFilter(currentActiveFilter);
+      }
     }
+    // Add the new filter
+    addFilter(filter);
   };
 
   return (
