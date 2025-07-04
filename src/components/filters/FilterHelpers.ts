@@ -9,7 +9,7 @@ import opening_hours from "opening_hours";
 // Shared predicates
 export const sharedPredicates = {
   // Always returns true - used for "no preference" options
-  noPreference: (_r: Resource) => true
+  noPreference: (_: Resource) => true
 };
 
 // Feeling predicates based on tags

@@ -90,13 +90,11 @@ function filterAndSortResources(resources: Resource[], filters: Filter[]): Resou
   const resourcesWithFilters = resources.map(resource => {
     // Create a new filtersSatisfied object
     const filtersSatisfied: { [key: string]: boolean } = {};
-    let satisfiesAnyFilter = false;
     
     // Check each filter
     filters.forEach(filter => {
       const isSatisfied = filter.predicate(resource);
       filtersSatisfied[filter.key] = isSatisfied;
-      if (isSatisfied) satisfiesAnyFilter = true;
     });
     
     // Return resource with filtersSatisfied attribute
