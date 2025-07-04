@@ -8,7 +8,7 @@ const options: SupportOption[] = [
   { emoji: '😵', label: 'Burnout & Stress', tag: Tag.Burnout, color: 'bg-red-100', filterKey: IssueFilterKey.BurnedOut },
   { emoji: '💙', label: 'Feeling Down', tag: Tag.Help, color: 'bg-orange-100', filterKey: IssueFilterKey.NeedHelp },
   { emoji: '🏡', label: 'Family Issues', tag: Tag.Home, color: 'bg-yellow-100', filterKey: IssueFilterKey.Home },
-  { emoji: '📚', label: 'Feel Directionless', tag: Tag.Career, color: 'bg-green-100', filterKey: IssueFilterKey.NeedCareerHelp },
+  { emoji: '📚', label: 'Feeling Directionless', tag: Tag.Career, color: 'bg-green-100', filterKey: IssueFilterKey.NeedCareerHelp },
 ];
 
 export default function SupportGrid({ setViewType }: { setViewType: (viewType: ViewType) => void }) {
