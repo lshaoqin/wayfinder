@@ -13,6 +13,7 @@ import ScrollingTopToolbar from "../navigation/ScrollingTopToolbar";
 import { CurrentResourceContext } from "../CurrentResourceProvider";
 import ResourcePage from "./ResourcePage";
 import ResourcePageBottomToolbar from "./ResourcePageBottomToolbar";
+import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 
 export default function PageSwiper() {
   const swiperRef = useRef<SwiperType | null>(null);
@@ -144,6 +145,15 @@ export default function PageSwiper() {
           ))}
         </Swiper>
         <ResourcePageBottomToolbar resource={ctx.getCurrentResource()} />
+        
+        {/* Blinking swipe instruction */}
+        <div className="w-full flex justify-center items-center mt-4 mb-2">
+          <div className="text-sm text-gray-500 animate-pulse flex items-center gap-2">
+            {currentIndex > 0 && <ArrowRightIcon className="w-5 h-5" />}
+            Swipe to see next result
+            {currentIndex < filtered.length - 1 && <ArrowLeftIcon className="w-5 h-5" />}
+          </div>
+        </div>
       </div>
     </div>
   );
