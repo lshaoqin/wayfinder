@@ -17,7 +17,12 @@ export default function Header({ viewType, setViewType }: { viewType: ViewType; 
 
   const handleFilterClick = () => {
     if (viewType === ViewType.Filters) {
-      setViewType(ViewType.ResourceList);
+      // If no filters are selected, return to landing view instead of resource list
+      if (!ctx?.currentFilters || ctx.currentFilters.length === 0) {
+        setViewType(ViewType.Landing);
+      } else {
+        setViewType(ViewType.ResourceList);
+      }
     } else {
       setViewType(ViewType.Filters);
     }
