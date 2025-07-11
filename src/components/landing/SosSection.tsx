@@ -6,10 +6,10 @@ export default function SosSection() {
       <p className="text-gray-700 flex items-center justify-center">
         If you need help now, {" "}
         <a 
-          href="tel:1767" 
+          href="tel:1771" 
           className="text-red-600 font-semibold inline-flex items-center hover:text-red-800 ml-1"
         >
-          <Phone className="w-3 h-3 mr-1" /> call 1767
+          <Phone className="w-3 h-3 mr-1" /> call 1771
         </a>
       </p>
     </div>
