@@ -1,4 +1,4 @@
-### Wayfinder
+## Wayfinder
 Wayfinder is a mobile-first webapp designed to help youths discover the mental health resources that suit them best.
 
 Try it out [here](https://wayfinder-sand.vercel.app/)!
